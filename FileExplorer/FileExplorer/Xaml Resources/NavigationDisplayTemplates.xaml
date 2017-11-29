@@ -1,0 +1,48 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                    xmlns:local="clr-namespace:FileExplorer">
+
+    <local:NavigationItemTemplateSelector x:Key="NavigationItemTemplateSelector"/>
+
+    <DataTemplate x:Key="NavFolderItemTemplate">
+        <DockPanel Height="25" Background="White">
+            <DockPanel.InputBindings>
+                <MouseBinding MouseAction="LeftDoubleClick"
+                                Command="{Binding DataContext.GoToCommand,
+                                ElementName=NavigationDisplayListBox}"
+                                CommandParameter="{Binding}"/>
+            </DockPanel.InputBindings>
+            <Image Source="..\Assets\Folder.ico" Height="20" Width="20"/>
+            <TextBlock Text="{Binding Name}" TextAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0"/>
+        </DockPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="NavFileItemTemplate">
+        <DockPanel Height="25" Background="White">
+            <DockPanel.InputBindings>
+                <MouseBinding MouseAction="LeftDoubleClick"
+                                Command="{Binding DataContext.GoToCommand,
+                                ElementName=NavigationDisplayListBox}"
+                                CommandParameter="{Binding}"/>
+            </DockPanel.InputBindings>
+            <Image Source="..\Assets\Drives\WindowsDrive.ico" Height="20" Width="20"/>
+            <TextBlock Text="{Binding Name}" TextAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0"/>
+        </DockPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="NavDriveItemTemplate">
+        <DockPanel Height="25" Background="White">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonUp">
+                    <i:InvokeCommandAction
+                                Command="{Binding DataContext.GoToCommand, ElementName=NavigationDisplayListBox}"
+                                CommandParameter="{Binding}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Image Source="..\Assets\Drives\WindowsDrive.ico" Height="20" Width="20"/>
+            <TextBlock Text="{Binding FullName}" TextAlignment="Left" VerticalAlignment="Center" Padding="5,0,0,0"/>
+        </DockPanel>
+    </DataTemplate>
+
+</ResourceDictionary>
