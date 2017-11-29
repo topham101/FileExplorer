@@ -1,12 +1,6 @@
 ﻿1. Hidden Files
 2. Better Navigation
-3. Only one click to navigate to places on the left hand side bar
 4. sort icons out- files and drives
 5. right click menu
 6. Drop down suggestions as you type in address within address bar
 7. Set Image Icons to image
-
-Make root viewmodel
-multiple viewmodels within root
-set datacontext of controls to individual VM's within root
-VM's get dependencies passed into ctors
