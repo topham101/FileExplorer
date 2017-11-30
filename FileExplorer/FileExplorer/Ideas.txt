@@ -1,6 +1,6 @@
 ﻿1. Hidden Files
 2. Better Navigation
-4. sort icons out- files and drives
 5. right click menu
 6. Drop down suggestions as you type in address within address bar
 7. Set Image Icons to image
+8. Make numbered file names list in the right order

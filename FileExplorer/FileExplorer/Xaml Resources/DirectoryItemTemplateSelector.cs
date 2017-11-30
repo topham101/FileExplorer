@@ -14,7 +14,7 @@ namespace FileExplorer
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
             DataTemplate dt = null;
-
+            
             if (item is FileItem)
                 dt = App.Current.MainWindow.FindResource("FileItemTemplate") as DataTemplate;
             else if (item is FolderItem)

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileExplorer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="File Explorer" Height="600" Width="800">
 
     <Window.DataContext>
         <local:FileExplorerViewModel/>
@@ -51,7 +51,13 @@
         </DockPanel>
 
         <!--Navigation Display-->
-        <ListBox Grid.Row="2" Grid.Column="0" ItemsSource="{Binding NavigationBarDirectory}" 
+
+        <TreeView Name="NavigationDisplayTreeView" Grid.Row="2" Grid.Column="0" DataContext="{Binding Path=NavigationDisplayViewModel}"
+                  ItemTemplateSelector="{StaticResource NavigationItemTemplateSelector}" HorizontalContentAlignment="Stretch"
+                  Margin="5,0,0,5"  ItemsSource="{Binding NavigationBarDirectory}" ><!--ItemContainerStyle="{StaticResource TreeViewItemStyle1}" >-->
+        </TreeView>
+        
+        <!--<ListBox Grid.Row="2" Grid.Column="0" ItemsSource="{Binding NavigationBarDirectory}" 
                  Margin="5,0,0,5" ItemTemplateSelector="{StaticResource NavigationItemTemplateSelector}"
                  DataContext="{Binding Path=NavigationDisplayViewModel}" Name="NavigationDisplayListBox">
             <ListBox.ItemContainerStyle>
@@ -59,7 +65,7 @@
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                 </Style>
             </ListBox.ItemContainerStyle>
-        </ListBox>
+        </ListBox>-->
         
         <!--Navigation / Directory Splitter-->
         <GridSplitter Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch"

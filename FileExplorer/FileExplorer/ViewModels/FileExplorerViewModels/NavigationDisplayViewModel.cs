@@ -29,15 +29,13 @@ namespace FileExplorer
 
         private void GoTo(object parameter)
         {
-            DriveItem drive = parameter as DriveItem;
+            var folderItem = parameter as FolderItem;
+            var driveItem = parameter as DriveItem;
 
-            if (drive == null)
-                return;
-
-            if (Directory.Exists(drive.FullName))
-            {
-                directoryDisplayViewModel.SetDirectory(drive.FullName);
-            }
+            if (folderItem != null)
+                directoryDisplayViewModel.SetDirectory(folderItem.FullName);
+            else if (driveItem != null)
+                directoryDisplayViewModel.SetDirectory(driveItem.FullName);
         }
 
         public ObservableCollection<DirectoryItem> NavigationBarDirectory { get; set; }

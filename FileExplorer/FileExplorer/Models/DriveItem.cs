@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,8 @@ namespace FileExplorer
     public class DriveItem : DirectoryItem
     {
         private static readonly string WindowsDrive = Path.GetPathRoot(Environment.SystemDirectory);
-        
+        private ObservableCollection<DirectoryItem> subDirectory;
+
         public ImageSource ImageSource { get; private set; }
         
         public DriveItem(FileInfo fileInfo) : base(fileInfo)
@@ -29,7 +31,18 @@ namespace FileExplorer
                 string path = $"Assets\\Drives\\{driveLetter}.ico";
                 ImageSource = new BitmapImage(new Uri(path, UriKind.Relative));
             }
-            
+
+            // Set sub directory
+        }
+
+        public ObservableCollection<DirectoryItem> SubDirectory
+        {
+            get
+            {
+                if (subDirectory == null)
+                    subDirectory = GetSubDirectory(FullName, false);
+                return subDirectory;
+            }
         }
     }
 }
